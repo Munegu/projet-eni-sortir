@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Sites
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center">Gérez les sites</h1>
+    </div>
+    <h4>Filtrer les sites</h4>
+    {{ form_start(siteForm) }}
+    {{ form_widget(siteForm) }}
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+    {{ form_end(siteForm) }}
+    <div class="mt-5">
+    <div>
+        <h4>Liste des sites</h4>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Villes</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for site in sites %}
+                <tr>
+                    <th scope="row">{{ site.nom }}</th>
+                    <td>
+                        <a href="{{ path("site_edit", {'id' : site.id}) }}">Modifier</a>
+                        <a  class="ml-2" href="{{ path("site_delete", {'id' : site.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="text-center">
+        <a href="{{ path("site_create") }}"
+           class="btn btn-primary mt-5 ">Ajout d'un site</a>
+        <a href="{{ path("main_accueil") }}"
+           class="btn btn-primary mt-5 ">Retour</a>
+    </div>
+{% endblock %}
+

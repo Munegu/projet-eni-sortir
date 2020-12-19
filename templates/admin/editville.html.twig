@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Modification ville
+{% endblock %}
+
+{% block main %}
+<h1 class="text-center">Modification d'une ville</h1>
+    <div class="container">
+        {{ form_start(villeForm) }}
+        {{ form_widget(villeForm) }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Modifier la Ville</button>
+            <a href="{{ path("main_villes") }}"
+               class="btn btn-primary ">Retour</a>
+        </div>
+    </div>
+    {{ form_end(villeForm) }}
+{% endblock %}
+

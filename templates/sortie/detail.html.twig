@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    détail sortie
+{% endblock %}
+
+{% block main %}
+<h1 class="text-center">Détail sortie</h1>
+    <div class="container row m-5">
+        <div class="col-md-5">
+            <p>Nom de la sortie : {{ sortie.nom }}</p>
+            <p>Date et heure de la sortie : {{ sortie.dateHeureDebut | date('d/m/Y H:i') }}</p>
+            <p>Date limite d'inscription : {{ sortie.dateLimiteInscription | date('d/m/Y') }}</p>
+            <p>Nombre de places : {{ sortie.nbInscriptionMax }}</p>
+            <p>Durée : {{ sortie.duree }} minutes</p>
+            <p>Description et infos : {{ sortie.infosSortie }}</p>
+            {% if sortie.etat.libelle == 'Annulée' %}
+                <p>Motif de l'annulation : {{ sortie.motifSupression }}</p>
+            {% endif %}
+        </div>
+        <div class="col-md-5 offset-md-1">
+            <p>Site organisateur : {{ sortie.siteOrganisateur.nom }}</p>
+            <p>Lieu : {{ sortie.lieu.nom }}</p>
+            <p>Ville : {{ sortie.lieu.ville.nom }}</p>
+            <p>Rue : {{ sortie.lieu.rue }}</p>
+            <p>Code postal: {{ sortie.lieu.ville.codePostal }}</p>
+            <p>Lattitude: {{ sortie.lieu.lattitude }}</p>
+            <p>Longitude: {{ sortie.lieu.longitude }}</p>
+
+        </div>
+        <div>
+            <h4>Liste des participants inscrits</h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Pseudo</th>
+                    <th scope="col">Nom</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for participant in sortie.inscrits %}
+                <tr>
+                    <th scope="row">{{ participant.username }}</th>
+                    <td>{{ participant.nom }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="text-center">
+    <a href="{{ path("main_accueil") }}"
+       class="btn btn-primary mt-5 ">Retour</a>
+    </div>
+{% endblock %}
+
+
+

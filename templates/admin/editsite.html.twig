@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Modification Site
+{% endblock %}
+
+{% block main %}
+    <h1 class="text-center">Modification d'un site</h1>
+    <div class="container">
+        {{ form_start(siteForm) }}
+        {{ form_widget(siteForm) }}
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Modifier le site</button>
+            <a href="{{ path("main_sites") }}"
+               class="btn btn-primary ">Retour</a>
+        </div>
+    </div>
+    {{ form_end(siteForm) }}
+{% endblock %}
+

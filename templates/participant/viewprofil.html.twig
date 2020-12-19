@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Détail profil
+{% endblock %}
+
+{% block main %}
+
+<div class="container row">
+    <div class="col-md-4">
+        <img width="120%" class="mt-5" src="https://pbs.twimg.com/media/DOMzDHiXUAEDzkq.jpg">
+    </div>
+<div class="col-md-5 offset-md-1">
+    <h1>{{ partipant.username }}</h1>
+    <p class="mt-3">Prénom : {{ partipant.prenom }}</p>
+    <p>Nom : {{ partipant.nom }}</p>
+    <p>Téléphone : {{ partipant.telephone }}</p>
+    <p>Email : {{ partipant.email }}</p>
+    <p>Site de rattachement : {{ partipant.siteRattache.nom }}</p>
+    <a href="{{ path("main_accueil") }}"
+       class="btn btn-primary mt-5">Retour</a>
+</div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Villes
+{% endblock %}
+
+{% block main %}
+<h1 class="text-center">Gérez les villes</h1>
+    </div>
+    <h4>Filtrer les villes</h4>
+    {{ form_start(villeForm) }}
+    {{ form_widget(villeForm) }}
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+    {{ form_end(villeForm) }}
+    <div>
+        <h4 class="mt-5">Liste des villes</h4>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">Ville</th>
+                <th scope="col">Code postal</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ville in villes %}
+                <tr>
+                    <th scope="row">{{ ville.nom }}</th>
+                    <td>{{ ville.codePostal }}</td>
+                    <td>
+                        <a href="{{ path("ville_edit", {'id' : ville.id}) }}">Modifier</a>
+                        <a  class="ml-2" href="{{ path("ville_delete", {'id' : ville.id}) }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="text-center">
+        <a href="{{ path("ville_create") }}"
+           class="btn btn-primary mt-5 ">Ajout d'une ville</a>
+        <a href="{{ path("main_accueil") }}"
+           class="btn btn-primary mt-5 ">Retour</a>
+    </div>
+{% endblock %}
+

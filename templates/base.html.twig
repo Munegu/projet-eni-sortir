@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="{{ asset('img/game-controller.png') }}" />
+        <title>{% block title %}Sortir !{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset("css/bootstrap.min.css") }}">
+            <link rel="stylesheet" href="{{ asset("css/app.css") }}">
+
+        {% endblock %}
+    </head>
+    <body class="container">
+        {% block body %}{% endblock %}
+        <main  >
+            <header>
+                {{ include('inc/_navbar.html.twig') }}
+            </header>
+
+            <div id="errorMsg">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+            {% block main %}{% endblock %}
+
+
+        </main>
+        <section id="footer" class="mt-3">
+            &copy; Sortir réalisé par &copy; N.V {{ "now" | date("Y") }}
+        </section>
+
+
+
+
+        {% block javascripts %}
+            <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+            <script src="{{ asset("js/popper.min.js") }}"></script>
+            <script src="{{ asset("js/bootstrap.min.js") }}"></script>
+        {% endblock %}
+    </body>
+</html>

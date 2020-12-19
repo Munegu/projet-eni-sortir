@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Modification Sortie
+{% endblock %}
+
+{% block main %}
+<h1>Modification Sortie</h1>
+    <div class="container row">
+        <div class="col-md-5">
+            {{ form_start(sortieForm) }}
+            <p>Nom de la sortie : {{ form_widget(sortieForm.nom) }}</p>
+            <p>Date et heure de la sortie : {{ form_widget(sortieForm.dateHeureDebut) }}</p>
+            <p>Date limite d'inscription : {{ form_widget(sortieForm.dateLimiteInscription) }}</p>
+            <p>Nombre de places : {{ form_widget(sortieForm.nbInscriptionMax) }}</p>
+        </div>
+        <div class="col-md-5 offset-md-1">
+            <p>Durée : {{ form_widget(sortieForm.duree) }}</p>
+            <p>Description et infos : {{ form_widget(sortieForm.infosSortie) }}</p>
+            <p>Site organisateur : {{ app.user.siteRattache.nom }}</p>
+            <p>Lieu : {{ form_widget(sortieForm.lieu) }}</p>
+        </div>
+    </div>
+    <div class="container text-center">
+        <p > {{ form_widget(sortieForm.enregistrer) }}
+            {{ form_widget(sortieForm.publier) }}
+            <a href="{{ path("main_accueil") }}" class="btn btn-primary ml-1">Annuler</a>
+            <a href="{{ path("sortie_cancel", {'id' : sortie.id}) }}" class="btn btn-primary ml-1">Supprimer la sortie</a>
+        </p>
+    </div>
+    {{ form_end(sortieForm) }}
+{% endblock %}
+

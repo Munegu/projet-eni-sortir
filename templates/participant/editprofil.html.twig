@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - Mon profil
+{% endblock %}
+
+{% block main %}
+<div class="container row">
+    <div class="col-md-4">
+        <img width="120%" class="mt-5" src="https://pbs.twimg.com/media/DOMzDHiXUAEDzkq.jpg">
+    </div>
+    <div class="col-md-5 offset-md-1">
+        <h1>Mon profil</h1>
+    {{ form_start(registerForm) }}
+    {{ form_widget(registerForm) }}
+    <button type="submit" class="btn btn-primary ">Modifier mon profil</button>
+        <a href="{{ path("main_accueil") }}"
+           class="btn btn-primary ">Annuler</a>
+    </div>
+</div>
+
+    {{ form_end(registerForm) }}
+{% endblock %}
+
